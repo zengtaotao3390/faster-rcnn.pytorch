@@ -50,7 +50,7 @@ class pascal_voc(imdb):
                          'bottle', 'bus', 'car', 'cat', 'chair',
                          'cow', 'diningtable', 'dog', 'horse',
                          'motorbike', 'person', 'pottedplant',
-                         'sheep', 'sofa', 'train', 'tvmonitor')
+                         'sheep', 'sofa', 'train', 'tvmonitor', 'head')
         self._class_to_ind = dict(zip(self.classes, xrange(self.num_classes)))
         self._image_ext = '.jpg'
         self._image_index = self._load_image_set_index()
@@ -245,7 +245,6 @@ class pascal_voc(imdb):
             gt_classes[ix] = cls
             overlaps[ix, cls] = 1.0
             seg_areas[ix] = (x2 - x1 + 1) * (y2 - y1 + 1)
-
         overlaps = scipy.sparse.csr_matrix(overlaps)
 
         return {'boxes': boxes,
